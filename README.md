@@ -2,6 +2,37 @@
 # MongoDB Fundamentals Assignment
 
 This assignment focuses on learning MongoDB fundamentals including setup, CRUD operations, advanced queries, aggregation pipelines, and indexing.
+## answer
+# CRUD Operations:
+
+insertOne() and insertMany()
+
+find(), findOne(), updateOne(), deleteOne()
+
+# Advanced Queries:
+
+Filtering with comparison operators ($gt, $lt, etc.)
+
+Projection to return specific fields
+
+Sorting (sort()), limiting (limit())
+
+# Aggregation Pipelines:
+
+$match, $group, $sort, $project
+
+db.books.aggregate([
+
+  { $match: { genre: "Fiction" } },
+  
+  { $group: { _id: "$author", count: { $sum: 1 } } }
+  
+])
+
+# Indexing:
+
+db.books.createIndex({ title: 1 })
+
 
 ## Assignment Overview
 
@@ -39,6 +70,38 @@ Your work will be automatically submitted when you push to your GitHub Classroom
 2. Add your `queries.js` file with all required MongoDB queries
 3. Include a screenshot of your MongoDB database
 4. Update the README.md with your specific setup instructions
+
+## answer 
+
+// Insert
+
+db.books.insertOne({ title: "Mongo Basics", author: "Jane Doe" })
+
+// Find
+
+db.books.find({ genre: "Non-fiction" }).limit(5)
+
+// Update
+
+db.books.updateOne({ title: "Mongo Basics" }, { $set: { genre: "Tech" } })
+
+// Delete
+
+db.books.deleteOne({ author: "Unknown" })
+
+// Aggregation
+
+db.books.aggregate([
+
+  { $match: { genre: "Science" } },
+  
+  { $group: { _id: "$author", count: { $sum: 1 } } }
+  
+])
+
+// Indexing
+
+db.books.createIndex({ author: 1 })
 
 ## Resources
 
